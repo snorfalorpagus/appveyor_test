@@ -4,8 +4,15 @@ environment:
   matrix:
     - PYTHON_VERSION: 2.7
       MINICONDA: C:\Miniconda
+
+    - PYTHON_VERSION: 2.7
+      MINICONDA: C:\Miniconda-x64
+
     - PYTHON_VERSION: 3.4
       MINICONDA: C:\Miniconda3
+
+    - PYTHON_VERSION: 3.4
+      MINICONDA: C:\Miniconda3-x64
 
 init:
   - "ECHO %PYTHON_VERSION% %MINICONDA%"
@@ -15,8 +22,10 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
+  # create new conda environment
   - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy cython"
   - activate test-environment
+  # build package
   - python setup.py build_ext --inplace
 
 test_script:
