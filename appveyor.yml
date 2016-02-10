@@ -38,7 +38,7 @@ install:
   - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy cython"
   - activate test-environment
   # build package
-  - "appveyor\build.cmd python setup.py build_ext --inplace"
+  - "appveyor\\build.cmd python setup.py build_ext --inplace"
 
 test_script:
   - python test.py
