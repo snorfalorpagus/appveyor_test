@@ -30,5 +30,11 @@ install:
   - appveyor\build.cmd
   - python setup.py build_ext --inplace
 
+after_test:
+  - python setup.py bdist_wheel
+
+artifacts:
+  - path: dist\*
+
 test_script:
   - python test.py
