@@ -17,5 +17,3 @@ IF "%DISTUTILS_USE_SDK%"=="1" (
 ) ELSE (
     ECHO Using default MSVC build environment
 )
-
-CALL %*
