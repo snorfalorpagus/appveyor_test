@@ -11,20 +11,16 @@ environment:
   matrix:
     - PYTHON_VERSION: 2.7
       MINICONDA: C:\Miniconda
-      PYTHON_ARCH: 32
 
     - PYTHON_VERSION: 2.7
       MINICONDA: C:\Miniconda-x64
-      PYTHON_ARCH: 64
 
     - PYTHON_VERSION: 3.4
       MINICONDA: C:\Miniconda3
-      PYTHON_ARCH: 32
 
     - PYTHON_VERSION: 3.4
       MINICONDA: C:\Miniconda3-x64
-      PYTHON_ARCH: 64
-      DISTUTILS_USE_SDK: "1"
+      DISTUTILS_USE_SDK: 1
 
 init:
   - "ECHO %PYTHON_VERSION% %MINICONDA%"
@@ -38,7 +34,7 @@ install:
   - "conda create -q -n test-environment python=%PYTHON_VERSION% numpy cython"
   - activate test-environment
   # build package
-  -- appveyor\build.cmd
+  - appveyor\build.cmd
   - python setup.py build_ext --inplace
 
 test_script:
